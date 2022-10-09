@@ -1,0 +1,58 @@
+Creating the users table:
+
+    CREATE TABLE users (
+    user_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    firstName VARCHAR(30) NOT NULL,
+    lastName VARCHAR(30) NOT NULL,
+    email VARCHAR(30) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    street VARCHAR(30) NOT NULL,
+    zipcode VARCHAR(10) NOT NULL,
+    city VARCHAR(30) NOT NULL,
+    country VARCHAR(30) NOT NULL,
+    password VARCHAR(30) NOT NULL);
+
+Creating the notes table:
+
+    CREATE TABLE notes (
+    note_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(30) NOT NULL,
+    content VARCHAR(255) NOT NULL,
+    created DATE,
+    user_id INT UNSIGNED NOT NULL,
+    CONSTRAINT FOREIGN KEY (user_id)
+    REFERENCES users(user_id));
+
+
+Insert into users:
+
+    INSERT INTO	 users (
+    user_id, firstName, lastName, email, phone, street, zipcode, city, country, password)
+    VALUES (
+    NULL, 'Suzanne', 'Zomer', 'Suzanne@gmail.com', '29348475', 'Overtoom 23', '2398SE', 'Amsterdam', 'Netherlands', 'P@ssw0rd');
+
+Insert into notes:
+
+    INSERT INTO	 notes (
+    note_id, title, content, created, user_id)
+    VALUES (
+    NULL, 'MyFirstNote', 'This is some sample text here', '2022-10-07', 1);
+
+
+Select the last inserted id from table:
+
+    SELECT LAST_INSERT_ID() as last_user_id FROM users;
+    SELECT LAST_INSERT_ID() as last_note_id FROM notes;
+
+
+Update user info
+
+    UPDATE users
+    SET firstName='Suzanne', lastName='Zomer', email='Suzanne@gmail.com', phone='29348475',
+    street='Overtoom 23', zipcode='2398SE', city='Amsterdam', country='Netherlands', password='P@ssw0rd'
+    WHERE user_id=1;
+
+
+Delete user
+    DELETE FROM users WHERE user_id = 1;
+    DELETE FROM notes WHERE user_id = 1;
