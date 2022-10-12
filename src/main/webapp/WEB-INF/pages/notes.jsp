@@ -2,39 +2,70 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <t:user_wrapper>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/notes.css" type="text/css"/>
 
-    <h1>Your Notes</h1>
-    <c:choose>
-        <c:when test = "${notes.size() > 0}">
+    <div id="current_note_container">
+        <div id="selected_note">
+            <h1>Create A New Note</h1>
+            <form action="/note/add" method="post">
+                <label>Title: </label>
+                <input type="text" name="title" value="${newNote.title}">
+                <br><br><br>
+                <textarea rows="10" cols="55" type="text" name="content" value="${newNote.content}"></textarea>
+                <br><br>
+                <input type="submit" value="Create New Note">
+            </form>
+        </div>
+    </div>
+    <div id="notes_container">
+        <h1>Your Notes</h1>
+        <div id="create_new_note_button">
 
-            <c:forEach var="note" items="${notes}">
-                <c:out value="${note.title}"/><br>
-                <c:out value="${note.created}"/><br>
-                <c:out value="${note.content}"/>
+        </div>
 
-                <form action="/note/delete" method="post">
-                    <input type="hidden" name="note_id" value="${note.note_id}" />
-                    <input type="submit" value="Delete Note">
-                </form><br>
-                <br>
-            </c:forEach>
+        <div id="notes_collection">
 
-        </c:when>
-        <c:otherwise>
+        <c:choose>
+            <c:when test = "${notes.size() > 0}">
+                <c:forEach var="note" items="${notes}">
+                    <div id="note_list_item" onclick="selectNote('${note.title}', '${note.created}', '${note.content}', ${note.note_id})">
+                        <b><c:out value="${note.title}"/></b><br>
+                        <c:out value="${note.created}"/><br>
+                        <c:out value="${note.content}"/></div><br>
+                </c:forEach>
+            </c:when>
+            <c:otherwise>
+                Your Currently Don't Have Any Notes.
+            </c:otherwise>
+        </c:choose>
+        </div>
+    </div>
 
-            Your Currently Don't Have Any Notes.
+    <script>
+        function showCreateNote(){
+            document.getElementById("selected_note").innerHTML =
+                '<h1>Create A New Note</h1>' +
+                '<form action="/note/add" method="post">' +
+                '<br><label>Title: </label>' +
+                '<input type="text" name="title" value="${newNote.title}">' +
+                '<br><br>' +
+                '<textarea rows="10" cols="55" type="text" name="content" value="${newNote.content}"></textarea>' +
+                '<br><br>' +
+                '<input type="submit" value="Create New Note">' +
+                '</form>';
 
-        </c:otherwise>
-    </c:choose>
+            document.getElementById("create_new_note_button").innerHTML = '';
+        }
 
-    <br>
-    <h1>Create New Note</h1>
-    <form action="/note/add" method="post">
-        <label>Title: </label>
-        <input type="text" name="title" value="${newNote.title}">
-        <label>Content: </label>
-        <input type="text" name="content" value="${newNote.content}">
-        <input type="submit" value="Create New Note">
-    </form>
-
+        function selectNote(title, created, content, id){
+            document.getElementById("selected_note").innerHTML =
+                '<div id="new_note_text"><h1>'+ title + '</h1><br>' + created + '<br><br>' + content + '<br><br>' +
+                '<br><form action="/note/delete" method="post">' +
+                '<input type="hidden" name="note_id" value="'+ id +'" />' +
+                '<input type="submit" value="Delete Note">' +
+                '</form><br><br></div>';
+            document.getElementById("create_new_note_button").innerHTML =
+                '<button onclick="showCreateNote()">Add A Note</button>';
+        }
+    </script>
 </t:user_wrapper>

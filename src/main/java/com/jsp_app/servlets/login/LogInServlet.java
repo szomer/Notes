@@ -34,7 +34,7 @@ public class LogInServlet extends HttpServlet {
         // User does not exist in db
         if (user == null) {
             // Set log in error message
-            String logInMessage = "Email or Password Incorrect";
+            String logInMessage = "Email/Password Incorrect";
             request.setAttribute("logInMessage", logInMessage);
             url = "/index.jsp";
         } else { // User exists in db

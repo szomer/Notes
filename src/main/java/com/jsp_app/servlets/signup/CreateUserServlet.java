@@ -18,7 +18,7 @@ public class CreateUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url                          = "/signup.jsp";
+        String url                          = "/WEB-INF/pages/signup.jsp";
         String signUpConfirmationMessage    = "Account Could Not Be Created";
         int user_id                         = 0;
 

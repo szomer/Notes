@@ -1,0 +1,9 @@
+#container {
+    text-align: center;
+}
+
+.label_signup {
+    width: 80px;
+    text-align: right;
+    display:inline-block;
+}

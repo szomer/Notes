@@ -1,0 +1,90 @@
+
+#current_note_container {
+    overflow: hidden;
+    float: left;
+    min-width: 500px;
+    min-height: 400px;
+    text-align: center;
+    background-color: black;
+    margin-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    height: 70%;
+    border-radius: 8px;
+    color: black;
+}
+
+#notes_container{
+    max-height: 600px;
+    overflow: hidden;
+    min-width: 272px;
+    text-align: right;
+    background-color: black;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    color: white;
+}
+
+#notes_collection {
+    overflow-y: scroll;
+    max-height: 450px;
+}
+
+
+#header_notes{
+    background-color: #85c5c7;
+    transition: all .9s ease;
+    -webkit-transition: all .4s ease;
+}
+#header_profile:hover{
+    background-color: #b3e1e3;
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+}
+#header_profile:active {
+    background-color: white;
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+}
+
+#note_list_item {
+    max-width: 280px;
+    max-height: 93px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 5px;
+    color: black;
+    overflow: hidden;
+}
+
+#note_list_item:hover{
+    background-color: #85c5c7;
+}
+
+#selected_note {
+    color: white;
+}
+
+#new_note_text{
+    max-width: 500px;
+    overflow: hidden;
+    text-align: center;
+}
+
+#create_new_note_button{
+    text-align: center;
+    height: 72px;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+#content {
+    min-height: 450px;
+}
