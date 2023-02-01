@@ -1,6 +1,6 @@
 # Note App
 
-This simple web application to keep your custom notes stored.
+A simple web application to keep your custom notes stored.
 
 - Jakarta Server Pages (JSP)
 - MySQL database
